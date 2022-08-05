@@ -1,6 +1,8 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.Vehicle;
+import com.example.demo.Services.BookingService;
 import com.example.demo.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,9 @@ public class VehicleController {
 
     @Autowired
     VehicleService vehicleService;
+
+    @Autowired
+    BookingService bookingService;
 
     @PostMapping("/addWheel")
     public Vehicle addVehicle (@RequestBody Vehicle vehicle){
@@ -48,4 +53,10 @@ public class VehicleController {
     //Delete using delete request
     @DeleteMapping("/deleteVehicle/{id}")
     public String deleteVehicle(@PathVariable int id){ return vehicleService.deleteVehicle(id);}
+
+
+    @PostMapping("/{userId}/{vehicleId}")
+    public Booking bookingVehicle(@PathVariable int userId, @PathVariable int vehicleId){
+        return bookingService.saveBookingName(userId, vehicleId);
+    }
 }

@@ -37,6 +37,7 @@ public class VehicleService {
 
     }
 
+    //Returns offroad vehicles only
     public List<Vehicle> getOffroads(String vehicleType){
         List<Vehicle> offroadList = vehicleRepository.findAll();
         List<Vehicle> newOffroadList= new ArrayList<>();
