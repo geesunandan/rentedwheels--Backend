@@ -15,13 +15,14 @@ public class BookingService {
     @Autowired
     BookingRepository bookingRepository;
 
+    // userService and vehicleService objects were made for the case where booking table draws id of vehicle and user
+//not applicable right now so ignore
+
     @Autowired
     UserService userService;
 
     @Autowired
     VehicleService vehicleService;
-//    UserRepository userRepository;
-//    VehicleTypeRepository vehicleTypeRepository;
 
     //Gives Booking list
     public List<Booking> getAllBookings(){
@@ -82,7 +83,7 @@ public class BookingService {
         return bookingRepository.save(booking1);
     }
 
-    //Deletes the user
+    //Deletes the booking
 
     public Booking deleteBooking(int id){
         Booking booking = bookingRepository.findById(id).get();
