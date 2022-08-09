@@ -1,0 +1,17 @@
+###
+POST http://localhost:8080/addWheel
+content-type: application/json
+
+{ 
+    "vehicleName":"Tesla",
+    "vehiclePrice":65000,
+    "vehicleType":"electric",
+    "vehicleRating":"4",
+    "vehicleReview":"5"   
+}
+
+###
+DELETE  http://localhost:8080/deleteVehicle/1
+
+###
+GET http://localhost:8080/getVehicle/3

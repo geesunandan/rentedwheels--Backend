@@ -15,7 +15,7 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-//    private String availability;
+    private boolean booked;
 //    private String model;
 //    private int rentalRate;
 //    private String type;

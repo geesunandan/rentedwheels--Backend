@@ -53,7 +53,7 @@ public class UserService {
     public User getById(int id){
         return (User) userRepository.findById(id).orElse(null);
     }
-
+//Update the user
     public User updateUser(User user) {
         User user1 = userRepository.findById(user.getId()).get();
 
@@ -67,11 +67,14 @@ public class UserService {
     return userRepository.save(user1);
     }
 
+    //Deletes the user
+
     public User deleteUser(int id){
         User user = userRepository.findById(id).get();
         user.setDeleted(true);
         return userRepository.save(user);
     }
+
 
 
 
