@@ -28,6 +28,12 @@ public class VehicleController {
         return vehicleService.saveVehicles(vehicles);
     }
 
+    // New
+    @PostMapping("/bookVehicle")
+    public Vehicle bookVehicle(@PathVariable int id){
+        return vehicleService.bookingStatus(id);
+    }
+
     //End of post mapping
 
     @GetMapping("/getVehicles")
@@ -54,9 +60,10 @@ public class VehicleController {
     @DeleteMapping("/deleteVehicle/{id}")
     public String deleteVehicle(@PathVariable int id){ return vehicleService.deleteVehicle(id);}
 
+// For the id method mentioned above
 
-    @PostMapping("/{userId}/{vehicleId}")
-    public Booking bookingVehicle(@PathVariable int userId, @PathVariable int vehicleId){
-        return bookingService.saveBookingName(userId, vehicleId);
-    }
+//    @PostMapping("/{userId}/{vehicleId}")
+//    public Booking bookingVehicle(@PathVariable int userId, @PathVariable int vehicleId){
+//        return bookingService.saveBookingName(userId, vehicleId);
+//    }
 }

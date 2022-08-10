@@ -18,11 +18,11 @@ public class BookingService {
     // userService and vehicleService objects were made for the case where booking table draws id of vehicle and user
 //not applicable right now so ignore
 
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    VehicleService vehicleService;
+//    @Autowired
+//    UserService userService;
+//
+//    @Autowired
+//    VehicleService vehicleService;
 
     //Gives Booking list
     public List<Booking> getAllBookings(){
@@ -65,7 +65,7 @@ public class BookingService {
     }
 
     //Finding the booking
-    public Booking getById(int id){
+    public Booking getBooking(int id){
         return (Booking) bookingRepository.findById(id).orElse(null);
     }
     //Update the booking
@@ -80,6 +80,9 @@ public class BookingService {
         booking1.setMailAddress(booking.getMailAddress());
         booking1.setPhNumber(booking.getPhNumber());
         booking1.setZipCode(booking.getZipCode());
+        booking1.setVName(booking.getVName());
+        booking1.setVprice(booking.getVprice());
+        booking1.setVImage(booking.getVImage());
         return bookingRepository.save(booking1);
     }
 
@@ -90,6 +93,8 @@ public class BookingService {
         booking.setBookingDeleted(true);
         return bookingRepository.save(booking);
     }
+
+
 
 
 }

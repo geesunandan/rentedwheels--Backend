@@ -36,6 +36,9 @@ public class Booking {
     private String zipCode;
     private String fromDate;
     private String toDate;
+    private String vName;
+    private String vprice;
+    private String vImage;
 
 
 

@@ -16,14 +16,20 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private boolean booked;
-//    private String model;
-//    private int rentalRate;
-//    private String type;
-//    private String usageType;
+    private String fuelElectric;
+    private String ac;
+    private String type;
+    private String seats;
     private String vehicleName;
     private String vehicleType;
     private String vehicleRating;
     private String vehicleReview;
     private int vehiclePrice;
-//    private String vehicleNumber;
+    private String vehicleNumber;
+    private String autoManual;
+    private String maxPower;
+    private String topSpeed;
+    private String vehicleImage;
+    private String accelerationTime;
+
 }
