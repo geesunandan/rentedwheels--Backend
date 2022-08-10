@@ -21,45 +21,59 @@ public class VehicleController {
     @Autowired
     BookingService bookingService;
 
+    //Adds vehicle
     @PostMapping("/addWheel")
     public Vehicle addVehicle (@RequestBody Vehicle vehicle){
         return vehicleService.saveVehicle(vehicle);
     }
 
+    //Adds vehicle in list
     @PostMapping("/addWheels")
     public List<Vehicle> addVehicles(@RequestBody List<Vehicle> vehicles){
         return vehicleService.saveVehicles(vehicles);
     }
 
+    // Books the vehicle
+    @PostMapping("/bookVehicle")
+    public Vehicle bookVehicle(@PathVariable int id){
+        return vehicleService.bookingStatus(id);
+    }
+
     //End of post mapping
 
+  //Gets vehicles list
     @GetMapping("/getVehicles")
     public List<Vehicle> getVehicles(){
         return vehicleService.getAllVehicles();
     }
 
+    //Gets a vehicle
     @GetMapping("/getVehicle/{id}")
     public Vehicle getVehicleById(@PathVariable int id){
         return vehicleService.getById(id);
     }
 
+    //Gets a vehicle of offroad type
     @GetMapping("/getOffroad/{vehicleType}")
     public List<Vehicle> getOffroad(@PathVariable String vehicleType){return vehicleService.getOffroads(vehicleType);}
 //End of get request
 
     //Start of Put Request
+
+    // Updates the vehicle info
     @PutMapping("/updateVehicle")
     public Vehicle updateVehicle(@RequestBody Vehicle vehicle) {
         return vehicleService.updateVehicle(vehicle);
     }
 
-    //Delete using delete request
+    //Deletes the selected vehicle
     @DeleteMapping("/deleteVehicle/{id}")
     public String deleteVehicle(@PathVariable int id){ return vehicleService.deleteVehicle(id);}
 
+// For the id method mentioned above
 
-    @PostMapping("/{userId}/{vehicleId}")
-    public Booking bookingVehicle(@PathVariable int userId, @PathVariable int vehicleId){
-        return bookingService.saveBookingName(userId, vehicleId);
-    }
+//    @PostMapping("/{userId}/{vehicleId}")
+//    public Booking bookingVehicle(@PathVariable int userId, @PathVariable int vehicleId){
+//        return bookingService.saveBookingName(userId, vehicleId);
+//    }
 }

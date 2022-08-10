@@ -1,9 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Booking;
-import com.example.demo.Entity.User;
 import com.example.demo.Services.BookingService;
-import com.example.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,12 +17,12 @@ public class BookingController {
     }
 
     @GetMapping("/getBooking/{id}")
-    public Booking getBooking(@PathVariable int id){
-        return bookingService.getById(id);
+    public Booking getVehicleBooking(@PathVariable int id){
+        return bookingService.getBooking(id);
     }
 
     @GetMapping("/getBookings")
-    public List<Booking> getBookings(){
+    public List<Booking> getVehicleBooking(){
         return bookingService.getAllBookings();
     }
 

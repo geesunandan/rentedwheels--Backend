@@ -1,5 +1,6 @@
 package com.example.demo.Services;
 
+import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.User;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Repository.UserRepository;
@@ -63,6 +64,16 @@ public class VehicleService {
         vehicle1.setVehicleType(vehicle.getVehicleType());
         vehicle1.setVehicleRating(vehicle.getVehicleRating());
         vehicle1.setVehicleReview(vehicle.getVehicleReview());
+        vehicle1.setVehicleNumber(vehicle.getVehicleNumber());
+        vehicle1.setTopSpeed(vehicle.getTopSpeed());
+        vehicle1.setMaxPower(vehicle.getMaxPower());
+        vehicle1.setAc(vehicle.getAc());
+        vehicle1.setAccelerationTime(vehicle.getAccelerationTime());
+        vehicle1.setAutoManual(vehicle.getAutoManual());
+        vehicle1.setSeats(vehicle.getSeats());
+        vehicle1.setFuelElectric(vehicle.getFuelElectric());
+        vehicle1.setVehicleImage(vehicle.getVehicleImage());
+        vehicle1.setVehicleNumber(vehicle.getVehicleNumber());
 
 
 
@@ -73,6 +84,14 @@ public class VehicleService {
     public String deleteVehicle(int id){
         vehicleRepository.deleteById(id);
         return "Vehicle removed " + id;
+    }
+
+    //Booking status
+    public Vehicle bookingStatus(int id){
+        Vehicle vehicle = vehicleRepository.findById(id).get();
+        vehicle.setBooked(true);
+        return vehicleRepository.save(vehicle);
+
     }
 
 
