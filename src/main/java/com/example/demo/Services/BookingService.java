@@ -28,6 +28,11 @@ public class BookingService {
     public List<Booking> getAllBookings(){
         List<Booking> bookingList= bookingRepository.findAll();
         List<Booking> newBookingList= new ArrayList<>();
+        for(Booking booking: bookingList){
+            if(!booking.isBookingDeleted()){
+                newBookingList.add(booking);
+            }
+        }
         return newBookingList;
          }
 
