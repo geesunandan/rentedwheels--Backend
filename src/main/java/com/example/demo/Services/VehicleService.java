@@ -73,6 +73,7 @@ public class VehicleService {
         vehicle1.setSeats(vehicle.getSeats());
         vehicle1.setFuelElectric(vehicle.getFuelElectric());
         vehicle1.setVehicleImage(vehicle.getVehicleImage());
+        vehicle1.setVehicleNumber(vehicle.getVehicleNumber());
 
 
 
