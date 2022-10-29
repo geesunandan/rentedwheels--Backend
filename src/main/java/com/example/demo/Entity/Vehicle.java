@@ -1,6 +1,7 @@
 package com.example.demo.Entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name ="vehicle")
+@Builder
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,5 +33,7 @@ public class Vehicle {
     private String topSpeed;
     private String vehicleImage;
     private String accelerationTime;
+    private String filePath;
+    private int AverageRating;
 
 }

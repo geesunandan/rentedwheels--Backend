@@ -6,7 +6,9 @@ import com.example.demo.Services.BookingService;
 import com.example.demo.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -73,4 +75,7 @@ public class VehicleController {
 //    public Booking bookingVehicle(@PathVariable int userId, @PathVariable int vehicleId){
 //        return bookingService.saveBookingName(userId, vehicleId);
 //    }
+
 }
+
+

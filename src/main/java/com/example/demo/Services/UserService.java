@@ -31,6 +31,7 @@ public class UserService {
         //return userRepository.findAll().stream().filter(x -> !x.isDeleted()).collect(Collectors.toList());
     }
 
+
     //Gives admin list
     public List<User> getAllAdmin(){
         List<User> adminList = userRepository.findAll();
