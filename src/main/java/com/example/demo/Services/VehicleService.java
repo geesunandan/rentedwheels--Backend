@@ -5,9 +5,13 @@ import com.example.demo.Entity.User;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Repository.VehicleRepository;
+import com.sun.scenario.effect.ImageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +96,23 @@ public class VehicleService {
         vehicle.setBooked(true);
         return vehicleRepository.save(vehicle);
 
+    }
+
+    private final String Folder_Path = "C:\\Users\\user\\OneDrive\\DesktopMy Files";
+    public String uploadImageToFileSystem (MultipartFile file) throws IOException{
+
+        String filePath = Folder_Path + file.getOriginalFilename();
+        Vehicle fileData = vehicleRepository.save(Vehicle.builder()
+                .type(file.getContentType())
+                .filePath(filePath).build());
+
+        file.transferTo(new File(filePath));
+
+        if (fileData != null) {
+    return "File uploaded Sucessfully" + filePath;
+        }
+
+        return null;
     }
 
 
