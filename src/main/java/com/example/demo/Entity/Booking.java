@@ -24,9 +24,9 @@ public class Booking {
 //    @JoinColumn(name = "user", referencedColumnName = "id")
 //    private User bookedBy;
 
-//    @OneToOne
-//    @JoinColumn(name = "vehicle", referencedColumnName = "id")
-//    private Vehicle vehicle;
+    @OneToOne
+    @JoinColumn(name = "vehicle", referencedColumnName = "id")
+    private Vehicle vehicle;
 
     private String firstName;
     private String lastName;
@@ -40,6 +40,8 @@ public class Booking {
     private String vprice;
     private String vImage;
     private String vNumber;
+    private String destination;
+
 
 
 

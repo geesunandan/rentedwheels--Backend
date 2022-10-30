@@ -21,8 +21,8 @@ public class BookingService {
 //    @Autowired
 //    UserService userService;
 //
-//    @Autowired
-//    VehicleService vehicleService;
+    @Autowired
+    VehicleService vehicleService;
 
     //Gives Booking list
     public List<Booking> getAllBookings(){
@@ -39,15 +39,15 @@ public class BookingService {
          //Below code was for case when the entity id from one table were drawn for the booking table
 
 //    //Saves Booking
-//    public  Booking saveBookingName(int userId, int vehicleId){
-//        Booking booking = new Booking();
-//        Vehicle vechile= vehicleService.getById(vehicleId);
-//        User user = userService.getById(userId);
-//        booking.setVehicle(vechile);
-//        booking.setBookedBy(user);
-//        booking.setBooked(true);
-//        return bookingRepository.save(booking);
-//    }
+    public  Booking saveBookingName( int vehicleId){ // int userId is also added inside paranthesis incase user needs to be saved
+        Booking booking = new Booking();
+        Vehicle vechile= vehicleService.getById(vehicleId);
+       // User user = userService.getById(userId);
+        booking.setVehicle(vechile);
+        //booking.setBookedBy(user);
+        booking.setBooked(true);
+        return bookingRepository.save(booking);
+    }
 //
 //    //Finding the booking
 //    public Booking getById(int id){
@@ -88,6 +88,7 @@ public class BookingService {
         booking1.setVName(booking.getVName());
         booking1.setVprice(booking.getVprice());
         booking1.setVImage(booking.getVImage());
+        booking1.setDestination(booking.getDestination());
         return bookingRepository.save(booking1);
     }
 
