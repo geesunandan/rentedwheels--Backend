@@ -18,9 +18,9 @@ public class BookingService {
     // userService and vehicleService objects were made for the case where booking table draws id of vehicle and user
 //not applicable right now so ignore
 
-//    @Autowired
-//    UserService userService;
-//
+    @Autowired
+    UserService userService;
+
     @Autowired
     VehicleService vehicleService;
 
@@ -39,12 +39,12 @@ public class BookingService {
          //Below code was for case when the entity id from one table were drawn for the booking table
 
 //    //Saves Booking
-    public  Booking saveBookingName( int vehicleId){ // int userId is also added inside paranthesis incase user needs to be saved
+    public  Booking saveBookingName(int userId, int vehicleId){ // int userId is also added inside paranthesis incase user needs to be saved
         Booking booking = new Booking();
         Vehicle vechile= vehicleService.getById(vehicleId);
-       // User user = userService.getById(userId);
+        User user = userService.getById(userId);
         booking.setVehicle(vechile);
-        //booking.setBookedBy(user);
+        booking.setBookedBy(user);
         booking.setBooked(true);
         return bookingRepository.save(booking);
     }
@@ -89,6 +89,7 @@ public class BookingService {
         booking1.setVprice(booking.getVprice());
         booking1.setVImage(booking.getVImage());
         booking1.setDestination(booking.getDestination());
+        booking1.setCitizenshipAttachment(booking.getCitizenshipAttachment());
         return bookingRepository.save(booking1);
     }
 

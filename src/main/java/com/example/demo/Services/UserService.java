@@ -67,7 +67,6 @@ public class UserService implements UserDetailsService {
 		User user1 = userRepository.findById(user.getId()).get();
 
 		user1.setAddress(user.getAddress());
-		user1.setCitizenshipAttachment(user.getCitizenshipAttachment());
 		user1.setFullName(user.getFullName());
 		user1.setEmailAddress(user.getEmailAddress());
 		user1.setPassword(user.getPassword());
