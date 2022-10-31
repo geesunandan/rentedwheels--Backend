@@ -65,7 +65,10 @@ public class BookingService {
 //This is the new code for booking service i.e. getting info from the user again
 
     //Saves Booking
-    public  Booking saveBooking(Booking booking){
+    public  Booking saveBooking(Booking booking, int userId, int vehicleId){
+        if(userId>0 && vehicleId>0){
+            saveBookingName(userId, vehicleId);
+        }
         return (Booking) bookingRepository.save(booking);
     }
 
