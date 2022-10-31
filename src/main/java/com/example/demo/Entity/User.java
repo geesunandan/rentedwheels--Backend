@@ -2,7 +2,11 @@ package com.example.demo.Entity;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.*;
+
 
 //@Getter
 //@Setter
@@ -19,11 +23,23 @@ public class User {
     private String address;
     private String emailAddress;
     private String fullName;
-    private String password;
     private String phoneNumber;
     private String pickupOutlet;
     private String citizenshipAttachment;
     private boolean admin;
     private boolean deleted;
+    private String username;
+	private String password;
+	
+    @ManyToMany(fetch=FetchType.EAGER)
+	private Collection<Role> roles=new ArrayList<Role>();
+    
+    public User(String username, String fullName, String emailAddress, String password, String address) {
+    	this.username= username;
+    	this.fullName= fullName;
+    	this.emailAddress= emailAddress;
+    	this.password= password;
+    	this.address= address;
+    }
 
 }
