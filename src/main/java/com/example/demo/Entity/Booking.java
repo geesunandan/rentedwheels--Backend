@@ -36,12 +36,13 @@ public class Booking {
     private String zipCode;
     private String fromDate;
     private String toDate;
-    private String vName;
+    private String vname;
     private String vprice;
-    private String vImage;
-    private String vNumber;
+    private String vimage;
+    private String vnumber;
     private String destination;
     private String citizenshipAttachment;
+    private String paymentMethod;
 
 
 

@@ -34,6 +34,7 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@CrossOrigin(origins = "http://localhost:3000")
 
 @RestController
 public class UserController {

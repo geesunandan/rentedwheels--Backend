@@ -15,6 +15,7 @@ public class BookingService {
     @Autowired
     BookingRepository bookingRepository;
 
+
     // userService and vehicleService objects were made for the case where booking table draws id of vehicle and user
 //not applicable right now so ignore
 
@@ -84,14 +85,16 @@ public class BookingService {
         booking1.setMailAddress(booking.getMailAddress());
         booking1.setPhNumber(booking.getPhNumber());
         booking1.setZipCode(booking.getZipCode());
-        booking1.setVName(booking.getVName());
+        booking1.setVname(booking.getVname());
         booking1.setVprice(booking.getVprice());
-        booking1.setVImage(booking.getVImage());
+        booking1.setVimage(booking.getVimage());
         booking1.setDestination(booking.getDestination());
         booking1.setCitizenshipAttachment(booking.getCitizenshipAttachment());
+        booking1.setPaymentMethod(booking.getPaymentMethod());
         return bookingRepository.save(booking1);
     }
 
+    //Deletes the user
     //Deletes the booking
 
     public Booking deleteBooking(int id){

@@ -27,6 +27,7 @@ public class VehicleRating {
     private User user;
 
     //Maximum of 5
+    
     private int rating;
 
     //Comment

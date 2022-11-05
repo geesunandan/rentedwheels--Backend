@@ -21,7 +21,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.atomic.AtomicReference;
 
-@CrossOrigin(origins = "http://localhost:3000")
+
+
 @RestController
 public class FileUploadController {
 

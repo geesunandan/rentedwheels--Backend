@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
 public class BookingController {
     @Autowired
     BookingService bookingService;
-
     @PostMapping("/addBooking")
   public Booking saveBooking(@RequestBody Booking booking,
                                 @RequestParam(value="userId",required=false) int userId,
@@ -39,7 +40,4 @@ public class BookingController {
     public Booking deleteBooking(@PathVariable int id){
         return bookingService.deleteBooking(id);
     }
-
-
-
 }
