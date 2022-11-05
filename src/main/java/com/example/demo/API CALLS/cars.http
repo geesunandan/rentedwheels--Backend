@@ -20,4 +20,9 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:8080/
+GET http://localhost:8080/ratings/25
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYXJjYTEyMyIsInJvbGVzIjpbXSwiaXNzIjoiL2FwaS9sb2dpbiIsImV4cCI6MTY2NzY0Nzc1MX0.Rh_I8rYpeC-jGuIncffD-0RRRnv-jArhyQs28bcbZ14
+
+###
+DELETE  http://localhost:8080/deleteRating/24
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYXJjYTEyMyIsInJvbGVzIjpbXSwiaXNzIjoiL2FwaS9sb2dpbiIsImV4cCI6MTY2NzY0Nzc1MX0.Rh_I8rYpeC-jGuIncffD-0RRRnv-jArhyQs28bcbZ14

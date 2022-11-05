@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class VehicleRatingDTO {
 
+    private int id;
     private String comment;
     private int ratings;
     private String userName;

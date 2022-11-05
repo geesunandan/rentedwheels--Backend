@@ -13,4 +13,6 @@ public interface VehicleRatingRepository extends JpaRepository<VehicleRating, In
 
 //    @Query("Select v from VehicleRating where v.")
     List<VehicleRating> findVehicleRatingByVehicle(Vehicle vehicle);
+
+    VehicleRating deleteVehicleRatingById(int id);
 }

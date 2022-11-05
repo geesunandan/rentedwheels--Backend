@@ -76,6 +76,7 @@ public class VehicleRatingService {
                     dto.setComment(rating.getComment());
                 }
                 dto.setRatingDate(rating.getDate().toString());
+                dto.setId(rating.getId());
                 dtoList.add(dto);
             }
             return dtoList;
@@ -100,5 +101,9 @@ public class VehicleRatingService {
         }
     }
 
-
+    public VehicleRating deleteRating(int id) {
+        VehicleRating rating = vehicleRatingRepository.findById(id).get();
+        vehicleRatingRepository.deleteById(id);
+        return rating;
+    }
 }
