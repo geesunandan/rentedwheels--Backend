@@ -60,7 +60,7 @@ public class VehicleService {
 
     //Updating the vehicle
     public  Vehicle updateVehicle(Vehicle vehicle){
-        Vehicle vehicle1 = vehicleRepository.findById(vehicle.getId()).get();
+        Vehicle vehicle1 = vehicleRepository.findById(vehicle.getId()).get();        
 
         vehicle1.setVehicleName(vehicle.getVehicleName());
         vehicle1.setVehiclePrice(vehicle.getVehiclePrice());

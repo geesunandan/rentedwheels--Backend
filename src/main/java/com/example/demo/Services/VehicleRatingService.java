@@ -101,9 +101,9 @@ public class VehicleRatingService {
         }
     }
 
-    public VehicleRating deleteRating(int id) {
+    public String deleteRating(int id) {
         VehicleRating rating = vehicleRatingRepository.findById(id).get();
         vehicleRatingRepository.deleteById(id);
-        return rating;
+        return "Deleted";
     }
 }

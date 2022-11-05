@@ -28,7 +28,7 @@ public class VehicleRatingController {
     }
 
     @DeleteMapping("deleteRating/{id}")
-    public VehicleRating deleteRating(@PathVariable int id){
+    public String deleteRating(@PathVariable int id){
         return vehicleRatingService.deleteRating(id);
     }
 }
