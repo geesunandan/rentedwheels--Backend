@@ -25,7 +25,7 @@ public class VehicleRating {
     private User user;
 
     //Maximum of 5
-    @Nullable
+    
     private int rating;
 
     //Comment

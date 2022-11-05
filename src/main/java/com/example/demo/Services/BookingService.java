@@ -19,11 +19,11 @@ public class BookingService {
     // userService and vehicleService objects were made for the case where booking table draws id of vehicle and user
 //not applicable right now so ignore
 
-//    @Autowired
-//    UserService userService;
-//
-//    @Autowired
-//    VehicleService vehicleService;
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    VehicleService vehicleService;
 
     //Gives Booking list
     public List<Booking> getAllBookings(){
@@ -40,15 +40,14 @@ public class BookingService {
          //Below code was for case when the entity id from one table were drawn for the booking table
 
 //    //Saves Booking
-//    public  Booking saveBookingName(int userId, int vehicleId){
-//        Booking booking = new Booking();
-//        Vehicle vechile= vehicleService.getById(vehicleId);
-//        User user = userService.getById(userId);
-//        booking.setVehicle(vechile);
-//        booking.setBookedBy(user);
-//        booking.setBooked(true);
-//        return bookingRepository.save(booking);
-//    }
+    public  Booking saveBookingName(Booking booking, int userId, int vehicleId){ // int userId is also added inside paranthesis incase user needs to be saved
+        Vehicle vehicle= vehicleService.getById(vehicleId);
+        User user = userService.getById(userId);
+        booking.setBookedBy(user);
+        booking.setVehicle(vehicle);
+        booking.setBooked(true);
+        return bookingRepository.save(booking);
+    }
 //
 //    //Finding the booking
 //    public Booking getById(int id){
@@ -66,8 +65,8 @@ public class BookingService {
 //This is the new code for booking service i.e. getting info from the user again
 
     //Saves Booking
-    public  Booking saveBooking(Booking booking){
-        return (Booking) bookingRepository.save(booking);
+    public  Booking saveBooking(Booking booking, int userId, int vehicleId){
+           return saveBookingName(booking,userId, vehicleId);
     }
 
     //Finding the booking
@@ -86,9 +85,12 @@ public class BookingService {
         booking1.setMailAddress(booking.getMailAddress());
         booking1.setPhNumber(booking.getPhNumber());
         booking1.setZipCode(booking.getZipCode());
-        booking1.setVName(booking.getVName());
+        booking1.setVname(booking.getVname());
         booking1.setVprice(booking.getVprice());
-        booking1.setVImage(booking.getVImage());
+        booking1.setVimage(booking.getVimage());
+        booking1.setDestination(booking.getDestination());
+        booking1.setCitizenshipAttachment(booking.getCitizenshipAttachment());
+        booking1.setPaymentMethod(booking.getPaymentMethod());
         return bookingRepository.save(booking1);
     }
 

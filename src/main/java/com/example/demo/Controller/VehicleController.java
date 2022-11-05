@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Services.BookingService;
+import com.example.demo.Services.VehicleRatingService;
 import com.example.demo.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,9 @@ public class VehicleController {
 
     @Autowired
     BookingService bookingService;
+
+    @Autowired
+    VehicleRatingService vehicleRatingService;
 
     //Adds vehicle
     @PostMapping("/addWheel")
@@ -71,6 +75,15 @@ public class VehicleController {
     //Deletes the selected vehicle
     @DeleteMapping("/deleteVehicle/{id}")
     public String deleteVehicle(@PathVariable int id){ return vehicleService.deleteVehicle(id);}
+
+
+    //Caluclating the average rating of vehicle
+    @GetMapping("rating/{vehicleID}")
+    public Double getVehicleRating(@PathVariable int vehicleID) throws Exception {
+        return vehicleRatingService.findAverageRatingOFVehicle(vehicleID);
+    }
+
+
 
 // For the id method mentioned above
 

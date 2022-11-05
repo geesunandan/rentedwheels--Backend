@@ -34,6 +34,5 @@ public class Vehicle {
     private String vehicleImage;
     private String accelerationTime;
     private String filePath;
-    private int AverageRating;
 
 }

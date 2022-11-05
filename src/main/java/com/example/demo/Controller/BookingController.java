@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
 public class BookingController {
     @Autowired
     BookingService bookingService;
     @PostMapping("/addBooking")
-  public Booking saveBooking(@RequestBody Booking booking){
-        return bookingService.saveBooking(booking);
+  public Booking saveBooking(@RequestBody Booking booking,
+                             @RequestParam(value="userId",required=false) int userId,
+                             @RequestParam(value="vehicleId",required=false) int vehicleId){
+        return bookingService.saveBooking(booking, userId, vehicleId);
     }
 
     @GetMapping("/getBooking/{id}")

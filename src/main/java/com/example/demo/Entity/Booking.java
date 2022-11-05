@@ -20,13 +20,13 @@ public class Booking {
 
     //Below code was for case when the entity id from one table were drawn for the booking table
 
-//    @OneToOne
-//    @JoinColumn(name = "user", referencedColumnName = "id")
-//    private User bookedBy;
+    @OneToOne
+    @JoinColumn(name = "bookedBy", referencedColumnName = "id")
+    private User bookedBy;
 
-//    @OneToOne
-//    @JoinColumn(name = "vehicle", referencedColumnName = "id")
-//    private Vehicle vehicle;
+    @OneToOne
+    @JoinColumn(name = "vehicle", referencedColumnName = "id")
+    private Vehicle vehicle;
 
     private String firstName;
     private String lastName;
@@ -36,10 +36,14 @@ public class Booking {
     private String zipCode;
     private String fromDate;
     private String toDate;
-    private String vName;
+    private String vname;
     private String vprice;
-    private String vImage;
-    private String vNumber;
+    private String vimage;
+    private String vnumber;
+    private String destination;
+    private String citizenshipAttachment;
+    private String paymentMethod;
+
 
 
 

@@ -5,7 +5,6 @@ import com.example.demo.Entity.User;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Repository.VehicleRepository;
-import com.sun.scenario.effect.ImageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
