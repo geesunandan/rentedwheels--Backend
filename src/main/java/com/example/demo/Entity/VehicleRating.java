@@ -1,9 +1,11 @@
 package com.example.demo.Entity;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -30,4 +32,7 @@ public class VehicleRating {
 
     //Comment
     private String comment;
+    @CreationTimestamp
+    public Date date;
+
 }

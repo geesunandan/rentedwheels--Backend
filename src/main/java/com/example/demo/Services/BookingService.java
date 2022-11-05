@@ -39,12 +39,11 @@ public class BookingService {
          //Below code was for case when the entity id from one table were drawn for the booking table
 
 //    //Saves Booking
-    public  Booking saveBookingName(int userId, int vehicleId){ // int userId is also added inside paranthesis incase user needs to be saved
-        Booking booking = new Booking();
-        Vehicle vechile= vehicleService.getById(vehicleId);
+    public  Booking saveBookingName(Booking booking, int userId, int vehicleId){ // int userId is also added inside paranthesis incase user needs to be saved
+        Vehicle vehicle= vehicleService.getById(vehicleId);
         User user = userService.getById(userId);
-        booking.setVehicle(vechile);
         booking.setBookedBy(user);
+        booking.setVehicle(vehicle);
         booking.setBooked(true);
         return bookingRepository.save(booking);
     }
@@ -66,10 +65,7 @@ public class BookingService {
 
     //Saves Booking
     public  Booking saveBooking(Booking booking, int userId, int vehicleId){
-        if(userId>0 && vehicleId>0){
-            saveBookingName(userId, vehicleId);
-        }
-        return (Booking) bookingRepository.save(booking);
+           return saveBookingName(booking,userId, vehicleId);
     }
 
     //Finding the booking

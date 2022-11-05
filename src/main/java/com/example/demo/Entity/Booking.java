@@ -21,7 +21,7 @@ public class Booking {
     //Below code was for case when the entity id from one table were drawn for the booking table
 
     @OneToOne
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "bookedBy", referencedColumnName = "id")
     private User bookedBy;
 
     @OneToOne
