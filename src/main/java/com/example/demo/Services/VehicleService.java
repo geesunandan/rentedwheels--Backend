@@ -96,23 +96,23 @@ public class VehicleService {
         return vehicleRepository.save(vehicle);
 
     }
-
-    private final String Folder_Path = "C:\\Users\\user\\OneDrive\\DesktopMy Files";
-    public String uploadImageToFileSystem (MultipartFile file) throws IOException{
-
-        String filePath = Folder_Path + file.getOriginalFilename();
-        Vehicle fileData = vehicleRepository.save(Vehicle.builder()
-                .type(file.getContentType())
-                .filePath(filePath).build());
-
-        file.transferTo(new File(filePath));
-
-        if (fileData != null) {
-    return "File uploaded Sucessfully" + filePath;
-        }
-
-        return null;
-    }
+// Uploading image from the local storage
+//    private final String Folder_Path = "C:\\Users\\user\\OneDrive\\DesktopMy Files";
+//    public String uploadImageToFileSystem (MultipartFile file) throws IOException{
+//
+//        String filePath = Folder_Path + file.getOriginalFilename();
+//        Vehicle fileData = vehicleRepository.save(Vehicle.builder()
+//                .type(file.getContentType())
+//                .filePath(filePath).build());
+//
+//        file.transferTo(new File(filePath));
+//
+//        if (fileData != null) {
+//    return "File uploaded Sucessfully" + filePath;
+//        }
+//
+//        return null;
+//    }
 
 
 }

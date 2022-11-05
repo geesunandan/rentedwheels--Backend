@@ -46,7 +46,6 @@ public class UserController {
     @Autowired
     VehicleRatingService vehicleRatingService;
 
-    private VehicleRatingDTO vehicleRatingDTO;
 
     @PostMapping("/addUser")
     public User saveUser(@RequestBody User user){
@@ -77,26 +76,6 @@ public class UserController {
         return userService.deleteUser(id);
     }
 
-
-    @PostMapping("rate/{userID}/{vehicleID}")
-    public String rateVehicles(@PathVariable("userID") int userID,
-                               @PathVariable("vehicleID") int vehicleID,
-                               @RequestParam(value="comment",required=false) String comment,
-                               @RequestParam(value="rating",required=false) Integer rating){
-        vehicleRatingDTO = new VehicleRatingDTO();
-        if(comment != null ){
-            vehicleRatingDTO.setComment(comment);
-        }
-        if(rating != null && rating>0){
-            vehicleRatingDTO.setRatings(rating);
-        }
-        if(rating ==null && comment == null){
-            vehicleRatingDTO=null;
-        }
-        return vehicleRatingService.rateVehicle(userID, vehicleID, vehicleRatingDTO);
-
-    }
-    
     @GetMapping("/token/refresh")
 	public void refreshToken(HttpServletRequest request, HttpServletResponse response ) throws JsonGenerationException, JsonMappingException, IOException {
 		String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
