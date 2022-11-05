@@ -1,0 +1,23 @@
+###
+GET http://localhost:8080/api/login?username=barca123&password=123456
+
+
+###
+POST http://localhost:8080/addUser HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYXJjYTEyMyIsInJvbGVzIjpbXSwiaXNzIjoiL2FwaS9sb2dpbiIsImV4cCI6MTY2NzQwMTIxNn0._nYyZ9lxppjFz-Z7sNi0mlRt3lr2lufbQLCNmooBlsE
+content-type: application/json
+
+{
+    "address": "Delhi", 
+    "emailAddress": "an@gmail.com",
+    "fullName": "Ankit",
+    "phoneNumber": "9876543210",
+    "pickupOutlet": "Delhi",
+    "admin": false,
+    "deleted": false,
+    "username": "ankitkh",
+    "password": "Ankit123"
+}
+
+###
+GET http://localhost:8080/

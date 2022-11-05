@@ -4,6 +4,7 @@ import com.example.demo.Entity.Vehicle;
 import com.example.demo.Repository.VehicleRepository;
 import com.example.demo.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.atomic.AtomicReference;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class FileUploadController {
 
