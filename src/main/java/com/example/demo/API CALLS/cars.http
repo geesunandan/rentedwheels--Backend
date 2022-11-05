@@ -26,3 +26,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYXJjYTEyM
 ###
 DELETE  http://localhost:8080/deleteRating/24
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYXJjYTEyMyIsInJvbGVzIjpbXSwiaXNzIjoiL2FwaS9sb2dpbiIsImV4cCI6MTY2NzY0Nzc1MX0.Rh_I8rYpeC-jGuIncffD-0RRRnv-jArhyQs28bcbZ14
+###
+GET  http://localhost:8080/getBookingByUserId/18
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYXJjYTEyMyIsInJvbGVzIjpbXSwiaXNzIjoiL2FwaS9sb2dpbiIsImV4cCI6MTY2NzY1MTk0N30.TOOHVars_Cf7wuYsR_UyA9cpaJMXg4bJdCB6_4zV5pE

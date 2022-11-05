@@ -94,6 +94,18 @@ public class BookingService {
         return bookingRepository.save(booking1);
     }
 
+    //Get booking by user id
+    public List<Booking> getBookingByUserId(int userId){
+        List<Booking> bookingList= bookingRepository.findAll();
+        List<Booking> newBookingList= new ArrayList<>();
+        for(Booking booking: bookingList){
+            if(!booking.isBookingDeleted() && booking.getBookedBy().getId()==userId){
+                newBookingList.add(booking);
+            }
+        }
+        return newBookingList;
+    }
+
     //Deletes the user
     //Deletes the booking
 
