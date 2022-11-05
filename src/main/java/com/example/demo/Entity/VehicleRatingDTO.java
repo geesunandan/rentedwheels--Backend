@@ -7,4 +7,6 @@ public class VehicleRatingDTO {
 
     private String comment;
     private int ratings;
+    private String userName;
+    private String ratingDate;
 }

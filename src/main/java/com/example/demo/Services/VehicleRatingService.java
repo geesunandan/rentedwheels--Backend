@@ -60,17 +60,22 @@ public class VehicleRatingService {
 
     public List<VehicleRatingDTO> findRatingDetailsByVehicle(int vehicleID) throws Exception {
         Vehicle vehicle = vehicleService.getById(vehicleID);
+
         List<VehicleRating> ratingDetails = new ArrayList<>();
         List<VehicleRatingDTO> dtoList = new ArrayStack<>();
         if (vehicle != null) {
             ratingDetails = vehicleRatingRepository.findVehicleRatingByVehicle(vehicle);
 
             for (VehicleRating rating : ratingDetails) {
+                User user = new User();
                 VehicleRatingDTO dto = new VehicleRatingDTO();
+                dto.setUserName(rating.getUser().getUsername());
+
                 dto.setRatings(rating.getRating());
                 if (rating.getComment() != null && !rating.getComment().isEmpty()) {
                     dto.setComment(rating.getComment());
                 }
+                dto.setRatingDate(rating.getDate().toString());
                 dtoList.add(dto);
             }
             return dtoList;

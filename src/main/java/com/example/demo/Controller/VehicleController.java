@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.Vehicle;
+import com.example.demo.Entity.VehicleRatingDTO;
 import com.example.demo.Services.BookingService;
 import com.example.demo.Services.VehicleRatingService;
 import com.example.demo.Services.VehicleService;
@@ -23,6 +24,9 @@ public class VehicleController {
 
     @Autowired
     VehicleRatingService vehicleRatingService;
+
+    private VehicleRatingDTO vehicleRatingDTO;
+
 
     //Adds vehicle
     @PostMapping("/addWheel")
@@ -78,6 +82,25 @@ public class VehicleController {
     @GetMapping("rating/{vehicleID}")
     public Double getVehicleRating(@PathVariable int vehicleID) throws Exception {
         return vehicleRatingService.findAverageRatingOFVehicle(vehicleID);
+    }
+
+    @PostMapping("rate/{userID}/{vehicleID}")
+    public String rateVehicles(@PathVariable("userID") int userID,
+                               @PathVariable("vehicleID") int vehicleID,
+                               @RequestParam(value="comment",required=false) String comment,
+                               @RequestParam(value="rating",required=false) Integer rating){
+        vehicleRatingDTO = new VehicleRatingDTO();
+        if(comment != null ){
+            vehicleRatingDTO.setComment(comment);
+        }
+        if(rating != null && rating>0){
+            vehicleRatingDTO.setRatings(rating);
+        }
+        if(rating ==null && comment == null){
+            vehicleRatingDTO=null;
+        }
+        return vehicleRatingService.rateVehicle(userID, vehicleID, vehicleRatingDTO);
+
     }
 
 
