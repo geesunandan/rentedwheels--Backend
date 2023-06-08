@@ -115,6 +115,13 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
+    // Cancels the booking
+    public Booking cancelBooking(int id){
+        Booking booking = bookingRepository.findById(id).get();
+        booking.setBooked(false);
+        return bookingRepository.save(booking);
+    }
+
 
 
 
