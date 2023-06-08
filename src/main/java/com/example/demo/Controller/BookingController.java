@@ -40,6 +40,11 @@ public class BookingController {
     public Booking deleteBooking(@PathVariable int id){
         return bookingService.deleteBooking(id);
     }
+    
+    @DeleteMapping("cancelBooking/{id}")
+    public Booking cancelBooking(@PathVariable int id){
+        return bookingService.cancelBooking(id);
+    }
 
     @GetMapping("/getBookingByUserId/{id}")
     public List<Booking> getBookingByUserId(@PathVariable int id){
