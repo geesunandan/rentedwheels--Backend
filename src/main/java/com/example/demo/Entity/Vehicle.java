@@ -1,13 +1,12 @@
 package com.example.demo.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -17,6 +16,9 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    private String vehicleStatus;
+    private boolean addedByUser;
     private boolean booked;
     private String fuelElectric;
     private String ac;

@@ -106,6 +106,12 @@ public class VehicleController {
 
     }
 
+    @PostMapping("/verifyVehicle")
+    public Vehicle verifyVehicle(@RequestParam(value = "id") int id,
+                                 @RequestParam(value = "vehicleStatus") String vehicleStatus){
+        return vehicleService.verifyVehicle(id, vehicleStatus);
+    }
+
 
 
 // For the id method mentioned above

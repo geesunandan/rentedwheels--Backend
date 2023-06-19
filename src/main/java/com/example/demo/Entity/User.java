@@ -34,12 +34,13 @@ public class User {
     @ManyToMany(fetch=FetchType.EAGER)
 	private Collection<Role> roles=new ArrayList<Role>();
     
-    public User(String username, String fullName, String emailAddress, String password, String address) {
+    public User(String username, String fullName, String emailAddress, String password, boolean admin, String address) {
     	this.username= username;
     	this.fullName= fullName;
     	this.emailAddress= emailAddress;
     	this.password= password;
     	this.address= address;
+        this.admin = admin;
     }
 
 }

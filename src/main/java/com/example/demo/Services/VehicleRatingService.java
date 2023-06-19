@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
@@ -75,9 +76,10 @@ public class VehicleRatingService {
                 if (rating.getComment() != null && !rating.getComment().isEmpty()) {
                     dto.setComment(rating.getComment());
                 }
-                dto.setRatingDate(rating.getDate().toString());
+                dto.setRatingDate(String.valueOf(LocalDate.now()));
                 dto.setId(rating.getId());
                 dtoList.add(dto);
+
             }
             return dtoList;
         }else{

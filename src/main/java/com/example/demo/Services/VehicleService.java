@@ -63,6 +63,8 @@ public class VehicleService {
         Vehicle vehicle1 = vehicleRepository.findById(vehicle.getId()).get();        
 
         vehicle1.setVehicleName(vehicle.getVehicleName());
+        vehicle1.setVehicleStatus(vehicle.getVehicleStatus());
+        vehicle1.setAddedByUser(vehicle.isAddedByUser());
         vehicle1.setVehiclePrice(vehicle.getVehiclePrice());
         vehicle1.setVehicleType(vehicle.getVehicleType());
         vehicle1.setVehicleRating(vehicle.getVehicleRating());
@@ -95,6 +97,12 @@ public class VehicleService {
         vehicle.setBooked(true);
         return vehicleRepository.save(vehicle);
 
+    }
+
+    public Vehicle verifyVehicle(int id, String vehicleStatus) {
+        Vehicle vehicle = vehicleRepository.findById(id).get();
+        vehicle.setVehicleStatus(vehicleStatus);
+        return vehicleRepository.save(vehicle);
     }
 // Uploading image from the local storage
 //    private final String Folder_Path = "C:\\Users\\user\\OneDrive\\DesktopMy Files";

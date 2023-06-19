@@ -4,16 +4,23 @@ import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.User;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Repository.BookingRepository;
+import com.example.demo.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+
 public class BookingService {
     @Autowired
     BookingRepository bookingRepository;
+
+    @Autowired
+    VehicleRepository vehicleRepository;
 
 
     // userService and vehicleService objects were made for the case where booking table draws id of vehicle and user
@@ -43,6 +50,8 @@ public class BookingService {
     public  Booking saveBookingName(Booking booking, int userId, int vehicleId){ // int userId is also added inside paranthesis incase user needs to be saved
         Vehicle vehicle= vehicleService.getById(vehicleId);
         User user = userService.getById(userId);
+        vehicle.setBooked(true);
+        vehicleRepository.save(vehicle);
         booking.setBookedBy(user);
         booking.setVehicle(vehicle);
         booking.setBooked(true);
@@ -112,15 +121,17 @@ public class BookingService {
     public Booking deleteBooking(int id){
         Booking booking = bookingRepository.findById(id).get();
         booking.setBookingDeleted(true);
+        booking.setBooked(false);
+
+        // Calling vehicle
+        Vehicle vehicle = vehicleRepository.getVehicleByBookingId(id);
+        vehicle.setBooked(false);
+        vehicleRepository.save(vehicle);
+
         return bookingRepository.save(booking);
     }
 
-    // Cancels the booking
-    public Booking cancelBooking(int id){
-        Booking booking = bookingRepository.findById(id).get();
-        booking.setBooked(false);
-        return bookingRepository.save(booking);
-    }
+
 
 
 
