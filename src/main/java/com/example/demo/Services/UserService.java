@@ -6,6 +6,8 @@ import com.example.demo.Entity.Vehicle;
 import com.example.demo.Repository.RoleRepository;
 import com.example.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +23,8 @@ import java.util.stream.Collectors;
 @Service
 public class UserService implements UserDetailsService {
 
+	@Autowired
+	private EmailSenderService emailSenderService;
 	@Autowired
 	UserRepository userRepository;
 	
@@ -102,6 +106,8 @@ public class UserService implements UserDetailsService {
 	public User saveUser(User user) {
 		// TODO Auto-generated method stub
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		String body = "Dear, " + user.getUsername() + " you have successfully registered in our system" ;
+		emailSenderService.sendEmail(user.getEmailAddress(),body,"RentedWheels Alert Message");
 		return userRepository.save(user);
 	}
 
@@ -126,5 +132,9 @@ public class UserService implements UserDetailsService {
 		// TODO Auto-generated method stub
 		return userRepository.findAll();
 	}
+
+
+
+
 
 }
