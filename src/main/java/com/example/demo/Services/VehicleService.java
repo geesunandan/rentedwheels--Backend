@@ -16,8 +16,14 @@ import java.util.List;
 
 @Service
 public class VehicleService {
+
+    @Autowired
+    UserService userService;
     @Autowired
     VehicleRepository vehicleRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     //Gives vehicles list
     public List<Vehicle> getAllVehicles(){
@@ -25,8 +31,12 @@ public class VehicleService {
     }
 
     //Saves Vehicle
-    public  Vehicle saveVehicle(Vehicle vehicle){
-        return (Vehicle) vehicleRepository.save(vehicle);
+    public  Vehicle saveVehicle(Vehicle vehicle, int userId){
+
+        User user = userService.getById(userId);
+        vehicle.setVehicleAddedBy(user);
+        vehicle.setUsername(user.getUsername());
+        return vehicleRepository.save(vehicle);
     }
 
     //Saves multiple vehicles at once

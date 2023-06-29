@@ -3,6 +3,7 @@ package com.example.demo.Entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +19,13 @@ public class Vehicle {
     private int id;
 
     private String vehicleStatus;
+
+    @OneToOne
+    @JoinColumn (name = "vehicle_added_by_user_id", referencedColumnName = "id")
+    private User vehicleAddedBy;
+
+    private String username;
+
     private boolean addedByUser;
     private boolean booked;
     private String fuelElectric;

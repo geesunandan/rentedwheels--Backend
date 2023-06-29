@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class UserService implements UserDetailsService {
 	private EmailSenderService emailSenderService;
 	@Autowired
 	UserRepository userRepository;
+
 	
 	@Autowired
 	RoleRepository roleRepository;
@@ -103,10 +105,12 @@ public class UserService implements UserDetailsService {
 				authorities);
 	}
 
+
+
 	public User saveUser(User user) {
 		// TODO Auto-generated method stub
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		String body = "Dear, " + user.getUsername() + " you have successfully registered in our system" ;
+		String body = "Dear, " + user.getUsername() + " you have successfully registered in our system. Click the link below to verify your email";
 		emailSenderService.sendEmail(user.getEmailAddress(),body,"RentedWheels Alert Message");
 		return userRepository.save(user);
 	}

@@ -33,8 +33,8 @@ public class VehicleController {
 
     //Adds vehicle
     @PostMapping("/addWheel")
-    public Vehicle addVehicle (@RequestBody Vehicle vehicle){
-        return vehicleService.saveVehicle(vehicle);
+    public Vehicle addVehicle (@RequestBody Vehicle vehicle,@RequestParam(value="userId") int userId){
+        return vehicleService.saveVehicle(vehicle, userId);
     }
 
     //Adds vehicle in list
