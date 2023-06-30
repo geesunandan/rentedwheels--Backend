@@ -65,6 +65,11 @@ public class UserController {
     @GetMapping("/getAdmins")
     public List<User> getAdmins(){return userService.getAllAdmin();}
 
+	@GetMapping("/verify-account")
+	public boolean verifyAccount(@RequestParam String verificationToken, @RequestParam Integer userId){
+		return userService.verifyAccount(verificationToken, userId);
+	}
+
 
     @PutMapping("/updateUser/{id}")
     public User updateUser(@RequestBody User user){

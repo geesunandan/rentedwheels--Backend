@@ -21,6 +21,9 @@ public class User {
 
     private int id;
     private String address;
+    private String verificationToken;
+    private boolean isVerified;
+
     private String emailAddress;
     private String fullName;
     private String phoneNumber;
