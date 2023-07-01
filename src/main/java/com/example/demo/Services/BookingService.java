@@ -86,6 +86,7 @@ public class BookingService {
     public Booking updateBooking(Booking booking) {
         Booking booking1 = bookingRepository.findById(booking.getId()).get();
 
+        booking1.setBookingStatus(booking.getBookingStatus());
         booking1.setCity(booking.getCity());
         booking1.setFirstName(booking.getFirstName());
         booking1.setLastName(booking.getLastName());
@@ -128,6 +129,12 @@ public class BookingService {
         vehicle.setBooked(false);
         vehicleRepository.save(vehicle);
 
+        return bookingRepository.save(booking);
+    }
+
+    public Booking verifyBooking(int id, String bookingStatus) {
+        Booking booking = bookingRepository.findById(id).get();
+        booking.setBookingStatus(bookingStatus);
         return bookingRepository.save(booking);
     }
 

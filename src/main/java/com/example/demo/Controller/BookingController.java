@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Booking;
+import com.example.demo.Entity.Vehicle;
 import com.example.demo.Services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,4 +48,12 @@ public class BookingController {
     public List<Booking> getBookingByUserId(@PathVariable int id){
         return bookingService.getBookingByUserId(id);
     }
+
+    @PostMapping("/verifyBooking")
+    public Booking verifyBooking(@RequestParam(value = "id") int id,
+                                 @RequestParam(value = "bookingStatus") String bookingStatus){
+        return bookingService.verifyBooking(id, bookingStatus);
+    }
+
+
 }

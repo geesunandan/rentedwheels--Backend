@@ -28,6 +28,7 @@ public class Booking {
     @JoinColumn(name = "vehicle", referencedColumnName = "id")
     private Vehicle vehicle;
 
+    private  String bookingStatus;
     private String firstName;
     private String lastName;
     private String mailAddress;
