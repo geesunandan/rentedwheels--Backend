@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 
@@ -135,6 +136,10 @@ public class BookingService {
     public Booking verifyBooking(int id, String bookingStatus) {
         Booking booking = bookingRepository.findById(id).get();
         booking.setBookingStatus(bookingStatus);
+        if (Objects.equals(bookingStatus, "Rejected"))
+        {
+            booking.setBooked(false);
+        }
         return bookingRepository.save(booking);
     }
 

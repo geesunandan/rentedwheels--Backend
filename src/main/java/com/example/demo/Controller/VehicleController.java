@@ -4,6 +4,7 @@ import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Entity.VehicleRatingDTO;
 import com.example.demo.Services.BookingService;
+
 import com.example.demo.Services.VehicleRatingService;
 import com.example.demo.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +29,21 @@ public class VehicleController {
     @Autowired
     VehicleRatingService vehicleRatingService;
 
-    private VehicleRatingDTO vehicleRatingDTO;
+   private VehicleRatingDTO vehicleRatingDTO;
+
 
 
     //Adds vehicle
     @PostMapping("/addWheel")
     public Vehicle addVehicle (@RequestBody Vehicle vehicle,@RequestParam(value="userId") int userId){
+
         return vehicleService.saveVehicle(vehicle, userId);
     }
 
     //Adds vehicle in list
     @PostMapping("/addWheels")
     public List<Vehicle> addVehicles(@RequestBody List<Vehicle> vehicles){
+
         return vehicleService.saveVehicles(vehicles);
     }
 
@@ -73,12 +77,15 @@ public class VehicleController {
     // Updates the vehicle info
     @PutMapping("/updateVehicle")
     public Vehicle updateVehicle(@RequestBody Vehicle vehicle) {
+
         return vehicleService.updateVehicle(vehicle);
     }
 
     //Deletes the selected vehicle
     @DeleteMapping("/deleteVehicle/{id}")
-    public String deleteVehicle(@PathVariable int id){ return vehicleService.deleteVehicle(id);}
+    public String deleteVehicle(@PathVariable int id){
+
+        return vehicleService.deleteVehicle(id);}
 
 
     //Caluclating the average rating of vehicle

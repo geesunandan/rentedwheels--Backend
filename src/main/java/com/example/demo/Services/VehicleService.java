@@ -112,6 +112,7 @@ public class VehicleService {
     public Vehicle verifyVehicle(int id, String vehicleStatus) {
         Vehicle vehicle = vehicleRepository.findById(id).get();
         vehicle.setVehicleStatus(vehicleStatus);
+
         return vehicleRepository.save(vehicle);
     }
 // Uploading image from the local storage

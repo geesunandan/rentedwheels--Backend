@@ -18,7 +18,6 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
-
     private int id;
     private String address;
     private String verificationToken;
