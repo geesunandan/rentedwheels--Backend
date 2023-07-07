@@ -110,6 +110,11 @@ public class UserService implements UserDetailsService {
 
     public User saveUser(User user) {
         // TODO Auto-generated method stub
+        Integer emailCount = userRepository.emailCount(user.getEmailAddress());
+        if (emailCount > 0)
+        {
+            throw new RuntimeException("Email address already exists");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setVerified(false);
         userRepository.saveAndFlush(user);
