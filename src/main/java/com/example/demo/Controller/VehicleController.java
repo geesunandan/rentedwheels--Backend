@@ -49,6 +49,11 @@ public class VehicleController {
         return vehicleService.bookingStatus(id);
     }
 
+    @PostMapping("/changeBookingStatus")
+    public Vehicle changeStatus(@PathVariable int id){
+        return vehicleService.changeBookingStatus(id);
+    }
+
     //End of post mapping
 
   //Gets vehicles list

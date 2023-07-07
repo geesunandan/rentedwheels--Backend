@@ -108,12 +108,19 @@ public class VehicleService {
         return vehicleRepository.save(vehicle);
 
     }
+    public Vehicle changeBookingStatus(int id){
+        Vehicle vehicle = vehicleRepository.findById(id).get();
+        vehicle.setBooked(false);
+        return vehicleRepository.save(vehicle);
+    }
 
     public Vehicle verifyVehicle(int id, String vehicleStatus) {
         Vehicle vehicle = vehicleRepository.findById(id).get();
         vehicle.setVehicleStatus(vehicleStatus);
         return vehicleRepository.save(vehicle);
     }
+
+
 // Uploading image from the local storage
 //    private final String Folder_Path = "C:\\Users\\user\\OneDrive\\DesktopMy Files";
 //    public String uploadImageToFileSystem (MultipartFile file) throws IOException{
