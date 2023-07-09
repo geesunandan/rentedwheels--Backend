@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Booking;
+import com.example.demo.Entity.User;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class BookingController {
     BookingService bookingService;
     @PostMapping("/addBooking")
   public Booking saveBooking(@RequestBody Booking booking,
-                                @RequestParam(value="userId",required=false) int userId,
-                                @RequestParam(value="vehicleId",required=false) int vehicleId){
+                             @RequestParam(value="userId",required=false) int userId,
+                             @RequestParam(value="vehicleId",required=false) int vehicleId){
         return bookingService.saveBooking(booking, userId, vehicleId);
     }
 
@@ -51,9 +52,10 @@ public class BookingController {
     public Booking vehicleDispatchStatusSetFalse(@PathVariable int id){
         return bookingService.vehicleDispatchStatusFalse(id);
     }
+
+
     
 //
-
     @GetMapping("/getBookingByUserId/{id}")
     public List<Booking> getBookingByUserId(@PathVariable int id){
         return bookingService.getBookingByUserId(id);

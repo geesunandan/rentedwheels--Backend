@@ -32,6 +32,9 @@ public class BookingService {
     @Autowired
     VehicleService vehicleService;
 
+    @Autowired
+    EmailSenderService emailSenderService;
+
     //Gives Booking list
     public List<Booking> getAllBookings(){
         List<Booking> bookingList= bookingRepository.findAll();
@@ -75,6 +78,7 @@ public class BookingService {
 
     //Saves Booking
     public  Booking saveBooking(Booking booking, int userId, int vehicleId){
+        userService.userBookingRequestMail(booking);
            return saveBookingName(booking,userId, vehicleId);
     }
 
@@ -146,9 +150,12 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
+
+
     public Booking verifyBooking(int id, String bookingStatus) {
         Booking booking = bookingRepository.findById(id).get();
         booking.setBookingStatus(bookingStatus);
+        userService.userBookingRequestAcceptedMail(booking);
         return bookingRepository.save(booking);
     }
 

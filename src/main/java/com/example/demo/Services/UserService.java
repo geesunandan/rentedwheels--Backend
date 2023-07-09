@@ -1,26 +1,22 @@
 package com.example.demo.Services;
 
+import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.Role;
 import com.example.demo.Entity.User;
 import com.example.demo.Entity.Vehicle;
 import com.example.demo.Repository.RoleRepository;
 import com.example.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -121,7 +117,21 @@ public class UserService implements UserDetailsService {
         accountVerificationService.sendVerificationEmail(user);
         return user;
     }
+    public User userBookingRequestMail(Booking booking){
+        String body = "Dear, admin you have received a request from " + booking.getBookedBy().getUsername()
+                + " for booking of " + booking.getVehicle().getVehicleName();
 
+        emailSenderService.sendEmail("sunandan@yopmail.com",body,"RentedWheels Booking Notification");
+        return null;
+    }
+
+    public User userBookingRequestAcceptedMail(Booking booking){
+        String body = "Dear, " + booking.getBookedBy().getUsername() + " your request for booking of " +
+                booking.getVehicle().getVehicleName() + "has been accepted";
+
+        emailSenderService.sendEmail(booking.getMailAddress(),body,"RentedWheels Booking Notification");
+        return null;
+    }
     public Role saveRole(Role role) {
         // TODO Auto-generated method stub
         return roleRepository.save(role);
