@@ -45,6 +45,8 @@ public class Booking {
     private String citizenshipAttachment;
     private String paymentMethod;
 
+    private boolean vehicleDispatched;
+
 
 
 

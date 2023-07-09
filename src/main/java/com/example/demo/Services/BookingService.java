@@ -132,6 +132,20 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
+    public Booking vehicleDispatchStatusTrue(int id){
+        Booking booking = bookingRepository.findById(id).get();
+            booking.setVehicleDispatched(true);
+
+        return bookingRepository.save(booking);
+    }
+
+    public Booking vehicleDispatchStatusFalse(int id){
+        Booking booking = bookingRepository.findById(id).get();
+        booking.setVehicleDispatched(false);
+
+        return bookingRepository.save(booking);
+    }
+
     public Booking verifyBooking(int id, String bookingStatus) {
         Booking booking = bookingRepository.findById(id).get();
         booking.setBookingStatus(bookingStatus);

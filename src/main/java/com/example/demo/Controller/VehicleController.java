@@ -44,12 +44,12 @@ public class VehicleController {
     }
 
     // Books the vehicle
-    @PostMapping("/bookVehicle")
+    @PostMapping("/bookVehicle/{id}")
     public Vehicle bookVehicle(@PathVariable int id){
         return vehicleService.bookingStatus(id);
     }
 
-    @PostMapping("/changeBookingStatus")
+    @PostMapping("/changeBookingStatus/{id}")
     public Vehicle changeStatus(@PathVariable int id){
         return vehicleService.changeBookingStatus(id);
     }

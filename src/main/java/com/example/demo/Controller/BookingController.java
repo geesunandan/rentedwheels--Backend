@@ -41,6 +41,16 @@ public class BookingController {
     public Booking deleteBooking(@PathVariable int id){
         return bookingService.deleteBooking(id);
     }
+
+    @PostMapping("vehicleDispatchStatusTrue/{id}")
+    public Booking vehicleDispatchStatusSetTrue(@PathVariable int id){
+        return bookingService.vehicleDispatchStatusTrue(id);
+    }
+
+    @PostMapping("vehicleDispatchStatusFalse/{id}")
+    public Booking vehicleDispatchStatusSetFalse(@PathVariable int id){
+        return bookingService.vehicleDispatchStatusFalse(id);
+    }
     
 //
 
